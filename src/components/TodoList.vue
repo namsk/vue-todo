@@ -1,7 +1,7 @@
 <template>
   <section>
     <ul>
-      <li v-for="(todoItem, index) in todoItems" :key="todoItem" class="shadow">
+      <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
         <i class="checkBtn fas fa-check" aria-hidden="true"></i>
         {{ todoItem }}
         <span
@@ -17,21 +17,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      todoItems: []
-    };
-  },
-  created() {
-    if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
-        this.todoItems.push(localStorage.key(i));
-      }
-    }
-  },
+  props: ['propsdata'],
   methods: {
     removeTodo(todoItem, index) {
-      console.log("Will be Removed:", todoItem);
+      // console.log("Will be Removed:", todoItem);
+      localStorage.removeItem(todoItem);
+      this.propsdata.splice(index, 1);
     }
   }
 };

@@ -23,10 +23,15 @@ export default {
   methods: {
     addTodo() {
       if (this.newTodoItem.trim() !== "") {
+        /*
         var value = this.newTodoItem && this.newTodoItem.trim();
         localStorage.setItem(value, value);
         console.log("Add Todo:", this.newTodoItem);
 
+        this.clearInput();
+        */
+        var value = this.newTodoItem && this.newTodoItem.trim();
+        this.$emit("addTodo", value);
         this.clearInput();
       }
     },
