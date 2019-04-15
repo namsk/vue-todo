@@ -21,8 +21,9 @@ export default {
   methods: {
     removeTodo(todoItem, index) {
       // console.log("Will be Removed:", todoItem);
-      localStorage.removeItem(todoItem);
-      this.propsdata.splice(index, 1);
+      // localStorage.removeItem(todoItem);
+      // this.propsdata.splice(index, 1);
+      this.$emit('removeTodo', todoItem, index);
     }
   }
 };
